@@ -1,5 +1,6 @@
 .header {
-  padding: 4rem 0;
+  height: 15rem;
+  /* padding: 4rem 0 0 0; */
   border-bottom: 2px solid var(--color-blue-grayish-light);
 
   display: flex;
@@ -23,9 +24,13 @@
 }
 
 .header__nav-item {
+  height: 100%;
   color: var(--color-blue-grayish-dark);
   text-decoration: none;
   border-bottom: 2px solid transparent;
+
+  display: flex;
+  align-items: center;
 }
 
 .header__nav-item:hover {
@@ -45,7 +50,7 @@
 }
 
 .header__profile--avatar {
-  width: 6rem;
+  width: 5rem;
 
   & img {
     width: 100%;
