@@ -38,9 +38,28 @@
           </div>
         </div>
 
-        <div class="cart">
+        <div class="cart hidden">
           <div class="cart__name">Cart</div>
-          <p class="cart__content--empty">Your cart is empty</p>
+          <div class="cart__content">
+            <p class="cart__content--empty">Your cart is empty.</p>
+            <div class="cart__item hidden">
+              <div class="cart__item--detail">
+                <div class="cart__item--img">
+                  <img src="./images/image-product-1-thumbnail.jpg" alt="product  image" />
+                </div>
+                <div>
+                  <div class="cart__item--name">Fall Limited Edition Sneakers</div>
+                  <div class="cart__item--price">
+                    <span class="cart__item--price-per">$125.00 x </span>
+                    <span class="cart__item--price-amount">3</span>
+                    <span class="cart__item--price-total">$375.00</span>
+                  </div>
+                </div>
+                <img class="cart__item--delete" src="./images/icon-delete.svg" alt="delete icon" />
+              </div>
+              <button class="cart__item--btn">Checkout</button>
+            </div>
+          </div>
         </div>
       </header>
       <main class="product">

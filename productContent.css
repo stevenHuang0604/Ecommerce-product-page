@@ -96,7 +96,7 @@
   background-color: var(--color-orange);
   padding: 2rem 6rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 
   display: flex;
