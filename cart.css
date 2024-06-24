@@ -46,6 +46,9 @@
 
 .cart__item--img {
   width: 5rem;
+  height: 5rem;
+  border-radius: 10px;
+  overflow: hidden;
 
   & img {
     width: 100%;

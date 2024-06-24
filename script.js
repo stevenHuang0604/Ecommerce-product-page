@@ -9,6 +9,7 @@ const priceTotal = document.querySelector('.cart__item--price-total');
 
 const addToCart = document.querySelector('.product__add');
 const cart = document.querySelector('.header__profile--cart');
+const cartBadge = document.querySelector('.header__profile--cart-badge');
 const cartBox = document.querySelector('.cart');
 const cartEmpty = document.querySelector('.cart__content--empty');
 const cartItem = document.querySelector('.cart__item');
@@ -37,6 +38,7 @@ qtyContainer.addEventListener('click', function (e) {
 
   qty.textContent = qtyValue;
   priceAmount.textContent = qtyValue;
+  cartBadge.textContent = qtyValue;
   priceTotal.textContent = `$${(+pricePerItem * qtyValue).toFixed(2)}`;
 });
 
@@ -46,6 +48,8 @@ addToCart.addEventListener('click', function (e) {
   if (e.target.closest('.product__add') === addToCart) {
     if (qtyValue === 0) return;
     cartBox.classList.remove('hidden');
+    cartBadge.classList.remove('hidden');
+    cartBadge.textContent = qtyValue;
     cartContent();
   }
 });
@@ -53,6 +57,7 @@ addToCart.addEventListener('click', function (e) {
 deleteCart.addEventListener('click', function (e) {
   cartEmpty.classList.remove('hidden');
   cartItem.classList.add('hidden');
+  cartBadge.classList.add('hidden');
 });
 
 cart.addEventListener('click', function (e) {
