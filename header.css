@@ -47,12 +47,21 @@
 }
 
 .header__profile--cart {
+  cursor: pointer;
 }
 
 .header__profile--avatar {
   width: 5rem;
+  cursor: pointer;
 
   & img {
     width: 100%;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    transition: all 0.2s;
   }
+}
+
+.header__profile--avatar:hover img {
+  border: 3px solid var(--color-orange);
 }
