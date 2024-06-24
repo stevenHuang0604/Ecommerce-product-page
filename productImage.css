@@ -1,4 +1,6 @@
 .product__img-box {
+  max-width: 65rem;
+
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -6,6 +8,8 @@
 
 .product__img {
   width: 100%;
+  align-self: center;
+  text-align: center;
   border-radius: 20px;
   overflow: hidden;
 

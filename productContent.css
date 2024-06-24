@@ -1,0 +1,119 @@
+.product__content-box {
+  align-content: center;
+}
+
+.product__subheading {
+  font-size: 1.4rem;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-blue-grayish-dark);
+  margin-bottom: 2rem;
+}
+
+.product__heading {
+  font-size: 4rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-black);
+  margin-bottom: 4rem;
+}
+
+.product__text {
+  font-size: var(--fs-body);
+  color: var(--color-blue-grayish-dark);
+  line-height: 1.5;
+  margin-bottom: 3rem;
+}
+
+.product__price {
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  column-gap: 2rem;
+  row-gap: 1rem;
+}
+
+.product__price-now {
+  font-size: 2.4rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-black);
+  grid-column: 1/2;
+}
+
+.product__price-discount {
+  font-size: 1.4rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  grid-column: 2/-1;
+  align-self: end;
+}
+
+.product__price-origin {
+  font-size: 1.4rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-blue-grayish-dark);
+  text-decoration: line-through;
+  grid-column: 1/2;
+}
+
+.product__cta {
+  display: flex;
+  justify-content: start;
+  gap: 2rem;
+}
+
+.product__qty {
+  font-size: var(--fs-body);
+  height: fit-content;
+  background-color: var(--color-blue-grayish-light);
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+}
+
+.product__qty-btn {
+  padding: 2rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.product__qty-btn:hover img {
+  opacity: var(--opacity-lightbox-bg);
+}
+
+.product__qty-number {
+  font-weight: var(--fw-bold);
+  padding: 2rem;
+}
+
+.product__add {
+  text-align: center;
+  background-color: var(--color-orange);
+  padding: 2rem 6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  & img {
+    fill: var(--color-black);
+  }
+
+  & span {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-bold);
+  }
+}
+
+.product__add:hover {
+  opacity: var(--opacity-lightbox-bg);
+}
