@@ -15,7 +15,13 @@ const cartEmpty = document.querySelector('.cart__content--empty');
 const cartItem = document.querySelector('.cart__item');
 const deleteCart = document.querySelector('.cart__item--delete');
 
+const thumbnails = document.querySelector('.product__thumbnails');
+const thumbnail = document.querySelectorAll('.product__thumbnail');
+
+const productImg = document.querySelector('.product__img');
+
 let qtyValue = 0;
+let productId = 1;
 
 qtyContainer.addEventListener('click', (e) => {
   const btn = e.target.closest('.product__qty-btn');
@@ -61,6 +67,26 @@ deleteCart.addEventListener('click', (e) => {
 cart.addEventListener('click', (e) => {
   // toggle cart component
   cartBox.classList.toggle('hidden');
+});
+
+thumbnails.addEventListener('click', (e) => {
+  // set current focused thumbnail and id
+  const currentThumbnail = e.target.closest('.product__thumbnail');
+  productId = currentThumbnail.id;
+
+  // set unfocused thumbnail to normal style
+  thumbnail.forEach((t) => {
+    if (t !== currentThumbnail) {
+      t.style.setProperty('opacity', '1');
+      t.style.setProperty('outline', 'none');
+    }
+  });
+
+  currentThumbnail.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+  currentThumbnail.style.setProperty('outline', '3px solid var(--color-orange)');
+
+  // set product image correspond to current focused thumbnail
+  productImg.src = `./images/image-product-${productId}.jpg`;
 });
 
 const init = () => {
