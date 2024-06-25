@@ -18,6 +18,15 @@ const deleteCart = document.querySelector('.cart__item--delete');
 const thumbnails = document.querySelector('.product__thumbnails');
 const thumbnail = document.querySelectorAll('.product__thumbnail');
 
+const overlay = document.querySelector('.overlay');
+const modal = document.querySelector('.modal');
+const modalImg = document.querySelector('.modal__img');
+const modalCloseBtn = document.querySelector('.modal__close-btn');
+const modalPrevBtn = document.querySelector('.modal__page-btn--prev');
+const modalNextBtn = document.querySelector('.modal__page-btn--next');
+const modalThumbnails = document.querySelector('.modal__thumbnails');
+const modalThumbnail = document.querySelectorAll('.modal__thumbnail');
+
 const productImg = document.querySelector('.product__img');
 
 let qtyValue = 0;
@@ -72,6 +81,7 @@ cart.addEventListener('click', (e) => {
 thumbnails.addEventListener('click', (e) => {
   // set current focused thumbnail and id
   const currentThumbnail = e.target.closest('.product__thumbnail');
+  let currentModalThumbnail;
   productId = currentThumbnail.id;
 
   // set unfocused thumbnail to normal style
@@ -82,11 +92,145 @@ thumbnails.addEventListener('click', (e) => {
     }
   });
 
+  modalThumbnail.forEach((mt) => {
+    if (mt.id !== productId) {
+      mt.style.removeProperty('opacity');
+      mt.style.removeProperty('outline');
+    } else {
+      currentModalThumbnail = mt;
+    }
+  });
+
   currentThumbnail.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
   currentThumbnail.style.setProperty('outline', '3px solid var(--color-orange)');
 
+  currentModalThumbnail.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+  currentModalThumbnail.style.setProperty('outline', '3px solid var(--color-orange)');
+
   // set product image correspond to current focused thumbnail
   productImg.src = `./images/image-product-${productId}.jpg`;
+  modalImg.src = `./images/image-product-${productId}.jpg`;
+});
+
+modalThumbnails.addEventListener('click', (e) => {
+  // set current focused thumbnail and id
+  const currentModalThumbnail = e.target.closest('.modal__thumbnail');
+  let currentThumbnail;
+  productId = currentModalThumbnail.id;
+
+  // set unfocused thumbnail to normal style
+  modalThumbnail.forEach((mt) => {
+    if (mt !== currentModalThumbnail) {
+      mt.style.removeProperty('opacity');
+      mt.style.removeProperty('outline');
+    }
+  });
+
+  thumbnail.forEach((t) => {
+    if (t.id !== productId) {
+      t.style.removeProperty('opacity');
+      t.style.removeProperty('outline');
+    } else {
+      currentThumbnail = t;
+    }
+  });
+
+  currentThumbnail.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+  currentThumbnail.style.setProperty('outline', '3px solid var(--color-orange)');
+
+  currentModalThumbnail.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+  currentModalThumbnail.style.setProperty('outline', '3px solid var(--color-orange)');
+
+  // set product image correspond to current focused thumbnail
+  productImg.src = `./images/image-product-${productId}.jpg`;
+  modalImg.src = `./images/image-product-${productId}.jpg`;
+});
+
+modalPrevBtn.addEventListener('click', (e) => {
+  if (+productId === 1) return;
+  --productId;
+
+  thumbnail.forEach((t) => {
+    if (+t.id !== productId) {
+      t.style.removeProperty('opacity');
+      t.style.removeProperty('outline');
+    } else if (+t.id === productId) {
+      t.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+      t.style.setProperty('outline', '3px solid var(--color-orange)');
+    }
+  });
+
+  modalThumbnail.forEach((mt) => {
+    console.log(mt.id, productId);
+    if (+mt.id !== productId) {
+      mt.style.removeProperty('opacity');
+      mt.style.removeProperty('outline');
+    } else if (+mt.id === productId) {
+      mt.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+      mt.style.setProperty('outline', '3px solid var(--color-orange)');
+    }
+  });
+
+  // set product image correspond to current focused thumbnail
+  productImg.src = `./images/image-product-${productId}.jpg`;
+  modalImg.src = `./images/image-product-${productId}.jpg`;
+});
+
+modalNextBtn.addEventListener('click', (e) => {
+  if (+productId === 4) return;
+  ++productId;
+
+  thumbnail.forEach((t) => {
+    if (+t.id !== productId) {
+      t.style.removeProperty('opacity');
+      t.style.removeProperty('outline');
+    } else if (+t.id === productId) {
+      t.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+      t.style.setProperty('outline', '3px solid var(--color-orange)');
+    }
+  });
+
+  modalThumbnail.forEach((mt) => {
+    console.log(mt.id, productId);
+    if (+mt.id !== productId) {
+      mt.style.removeProperty('opacity');
+      mt.style.removeProperty('outline');
+    } else if (+mt.id === productId) {
+      mt.style.setProperty('opacity', 'var(--opacity-lightbox-bg)');
+      mt.style.setProperty('outline', '3px solid var(--color-orange)');
+    }
+  });
+
+  // set product image correspond to current focused thumbnail
+  productImg.src = `./images/image-product-${productId}.jpg`;
+  modalImg.src = `./images/image-product-${productId}.jpg`;
+});
+
+// open overlay and modal while clicking product image
+productImg.addEventListener('click', (e) => {
+  overlay.classList.remove('hidden');
+  modal.classList.remove('hidden');
+});
+
+const closeModal = () => {
+  overlay.classList.add('hidden');
+  modal.classList.add('hidden');
+};
+
+// close overlay by clicking close button in modal
+modalCloseBtn.addEventListener('click', closeModal);
+
+// close overlay and modal whiling clicking overlay
+overlay.addEventListener('click', closeModal);
+
+//  close overlay and modal whiling press escape key overlay
+window.addEventListener('keydown', (e) => {
+  if (overlay.classList.contains('hidden')) return;
+
+  if (e.key === 'Escape') {
+    overlay.classList.add('hidden');
+    modal.classList.add('hidden');
+  }
 });
 
 const init = () => {
