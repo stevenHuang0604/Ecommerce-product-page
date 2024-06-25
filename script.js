@@ -239,10 +239,12 @@ window.addEventListener('keydown', (e) => {
 
 menuOpenBtn.addEventListener('click', (e) => {
   sidebar.classList.remove('hidden');
+  overlay.classList.remove('hidden');
 });
 
 menuCloseBtn.addEventListener('click', (e) => {
   sidebar.classList.add('hidden');
+  overlay.classList.add('hidden');
 });
 
 const init = () => {
