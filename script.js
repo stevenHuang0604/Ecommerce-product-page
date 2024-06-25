@@ -77,8 +77,8 @@ thumbnails.addEventListener('click', (e) => {
   // set unfocused thumbnail to normal style
   thumbnail.forEach((t) => {
     if (t !== currentThumbnail) {
-      t.style.setProperty('opacity', '1');
-      t.style.setProperty('outline', 'none');
+      t.style.removeProperty('opacity');
+      t.style.removeProperty('outline');
     }
   });
 
