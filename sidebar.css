@@ -1,0 +1,36 @@
+.sidebar {
+  padding: 3rem;
+  position: absolute;
+  width: 30rem;
+  height: 100%;
+  background-color: var(--color-white);
+  z-index: 5;
+}
+
+.sidebar__close-btn {
+  border: none;
+  background-color: var(--color-white);
+  margin-bottom: 6rem;
+  cursor: pointer;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.sidebar__nav-item {
+  font-size: 2.4rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-black);
+  text-decoration: none;
+  width: min-content;
+  border-bottom: 3px solid transparent;
+
+  transition: all 0.2s;
+}
+
+.sidebar__nav-item:hover {
+  border-bottom: 3px solid var(--color-orange);
+}

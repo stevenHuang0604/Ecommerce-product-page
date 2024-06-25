@@ -12,5 +12,35 @@
 
   & > * {
     flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .product {
+    padding: 4rem 4rem;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .container {
+    max-width: 90vw;
+  }
+
+  .product {
+    padding: 3rem 4rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    max-width: 100vw;
+  }
+
+  .product {
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
   }
 }

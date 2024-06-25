@@ -27,6 +27,10 @@ const modalNextBtn = document.querySelector('.modal__page-btn--next');
 const modalThumbnails = document.querySelector('.modal__thumbnails');
 const modalThumbnail = document.querySelectorAll('.modal__thumbnail');
 
+const menuOpenBtn = document.querySelector('.header__menu');
+const menuCloseBtn = document.querySelector('.sidebar__close-btn');
+const sidebar = document.querySelector('.sidebar');
+
 const productImg = document.querySelector('.product__img');
 
 let qtyValue = 0;
@@ -231,6 +235,14 @@ window.addEventListener('keydown', (e) => {
     overlay.classList.add('hidden');
     modal.classList.add('hidden');
   }
+});
+
+menuOpenBtn.addEventListener('click', (e) => {
+  sidebar.classList.remove('hidden');
+});
+
+menuCloseBtn.addEventListener('click', (e) => {
+  sidebar.classList.add('hidden');
 });
 
 const init = () => {

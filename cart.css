@@ -86,3 +86,12 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 700px) {
+  .cart {
+    width: 95vw;
+
+    top: 110%;
+    right: 1vw;
+  }
+}

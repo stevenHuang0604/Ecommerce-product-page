@@ -24,7 +24,7 @@ html {
 body {
   font-family: 'Kumbh Sans', sans-serif;
   background-color: var(--color-white);
-  height: 100vh;
+  height: 100%;
 }
 
 *,
@@ -37,4 +37,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+@media screen and (max-width: 1140px) {
+  html {
+    font-size: 56.25%;
+  }
 }

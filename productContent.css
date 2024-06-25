@@ -87,6 +87,7 @@
 }
 
 .product__qty-number {
+  text-align: center;
   font-weight: var(--fw-bold);
   padding: 2rem;
 }
@@ -116,4 +117,28 @@
 
 .product__add:hover {
   opacity: var(--opacity-lightbox-bg);
+}
+
+@media screen and (max-width: 1000px) {
+  .product__add {
+    padding: 2rem 4rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .product__content-box {
+    padding: 4rem;
+  }
+
+  .product__cta {
+    flex-direction: column;
+  }
+
+  .product__qty {
+    display: flex;
+
+    & > * {
+      flex: 1;
+    }
+  }
 }

@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.header__menu {
+  display: none;
+}
+
 .header__logo {
   width: 16rem;
 
@@ -82,4 +86,31 @@
 
 .header__profile--avatar:hover img {
   border: 3px solid var(--color-orange);
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    padding: 0 4rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header {
+    height: 10rem;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__menu {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    stroke: var(--color-white);
+    fill: var(--color-white);
+  }
 }
