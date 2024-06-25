@@ -15,51 +15,66 @@ const cartEmpty = document.querySelector('.cart__content--empty');
 const cartItem = document.querySelector('.cart__item');
 const deleteCart = document.querySelector('.cart__item--delete');
 
-let qtyValue = +qty.textContent;
+let qtyValue = 0;
 
-const cartContent = function () {
-  if (qtyValue === 0) {
-    cartEmpty.classList.remove('hidden');
-    cartItem.classList.add('hidden');
-  } else {
-    cartEmpty.classList.add('hidden');
-    cartItem.classList.remove('hidden');
-  }
-};
-
-qtyContainer.addEventListener('click', function (e) {
+qtyContainer.addEventListener('click', (e) => {
   const btn = e.target.closest('.product__qty-btn');
 
   // guard clause
   if (!btn) return;
 
+  // update quantity value wheather it is increase or decrease
   if (btn === decreaseBtn) qtyValue = qtyValue === 0 ? 0 : --qtyValue;
-  if (btn === increaseBtn) ++qtyValue;
+  else if (btn === increaseBtn) qtyValue = ++qtyValue;
 
   qty.textContent = qtyValue;
-  priceAmount.textContent = qtyValue;
-  cartBadge.textContent = qtyValue;
-  priceTotal.textContent = `$${(+pricePerItem * qtyValue).toFixed(2)}`;
 });
 
-addToCart.addEventListener('click', function (e) {
-  e.preventDefault();
+addToCart.addEventListener('click', (e) => {
+  // open cart component
+  cartBox.classList.remove('hidden');
 
-  if (e.target.closest('.product__add') === addToCart) {
-    if (qtyValue === 0) return;
-    cartBox.classList.remove('hidden');
+  if (qtyValue > 0) {
+    // show cart item component
+    cartEmpty.classList.add('hidden');
+    cartItem.classList.remove('hidden');
+
+    // show cart badge
     cartBadge.classList.remove('hidden');
+
+    // update item quantity and total price
+    priceAmount.textContent = qtyValue;
+    priceTotal.textContent = `$${(+pricePerItem * qtyValue).toFixed(2)}`;
     cartBadge.textContent = qtyValue;
-    cartContent();
   }
 });
 
-deleteCart.addEventListener('click', function (e) {
+deleteCart.addEventListener('click', (e) => {
+  // hidden cart item component
   cartEmpty.classList.remove('hidden');
   cartItem.classList.add('hidden');
+
+  // hide cart badge
   cartBadge.classList.add('hidden');
 });
 
-cart.addEventListener('click', function (e) {
+cart.addEventListener('click', (e) => {
+  // toggle cart component
   cartBox.classList.toggle('hidden');
 });
+
+const init = () => {
+  // set item quantity = 0
+  qty.textContent = qtyValue;
+
+  // hide cart component & set cart list to empty
+  cartBox.classList.add('hidden');
+  cartEmpty.classList.remove('hidden');
+  cartItem.classList.add('hidden');
+
+  // hide cart badge & set to 0
+  cartBadge.classList.add('hidden');
+  cartBadge.textContent = qtyValue;
+};
+
+init();
